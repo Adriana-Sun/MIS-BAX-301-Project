@@ -1,3 +1,10 @@
+#### Group 2, MIS/BAX 304
+## Adriana Sun, as242972
+## Emma Kate Balog, ekb986
+## Luke Montgomery, lam7473
+## Mitali Khatri, mk47223
+
+
 def load_menu(filename):
     menu = []
 
