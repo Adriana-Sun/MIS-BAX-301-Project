@@ -1,0 +1,37 @@
+﻿=== COFFEE & TEA ===
+Espresso, 2.95
+Americano, 3.25
+Cappuccino, 4.10
+Vanilla Latte, 4.65
+Caramel Macchiato, 4.95
+Mocha, 4.75
+Iced Coffee, 3.50
+Matcha Latte, 4.50
+Chai Latte, 4.25
+Iced Green Tea, 3.25
+
+
+=== DRINKS ===
+Iced Lemonade, 3.10
+Strawberry Smoothie, 4.95
+Mango Smoothie, 5.25
+Orange Juice, 3.50
+Bottled Water, 1.95
+Sparkling Water, $2.25
+Energy Drink, 3.75
+Arnold Palmer, 3.25
+Grape Soda, 2.75
+Root Beer, 2.75
+
+
+=== FOOD ===
+Blueberry Muffin, 3.10
+Chocolate Croissant, 3.95
+Cinnamon Roll, 3.75
+Plain Bagel, 2.25
+Turkey Sandwich, 7.25
+Ham & Swiss Sandwich, $7.50
+Veggie Wrap, 6.95
+Chicken Caesar Wrap, 7.75
+Tomato Soup, 4.25
+Broccoli Cheddar Soup, 4.75
