@@ -23,3 +23,14 @@ def load_menu(filename):
 def display_menu(menu):
     for item in menu:
         print(f"{item[0]}, ${item[1]:.2f}")
+
+## Adding Orders -- Adriana
+
+
+## Removing Orders -- Mitali
+
+
+## Calculating Subtotal, Tax, and Discount -- Emma
+
+
+## Receipt Generation -- Mishaal
