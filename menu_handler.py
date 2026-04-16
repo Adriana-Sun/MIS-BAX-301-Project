@@ -4,10 +4,11 @@
 ## Luke Montgomery, lam7473
 ## Mitali Khatri, mk47223
 
+menu = []
+order = []
 
 def load_menu(filename):
-    menu = []
-
+    
     with open(filename, 'r') as file:
         for line in file:
             line = line.strip()
@@ -27,10 +28,19 @@ def display_menu(menu):
 ## Adding Orders -- Adriana
 
 
-## Removing Orders -- Mitali
 
 
 ## Calculating Subtotal, Tax, and Discount -- Emma
 
 
 ## Receipt Generation -- Mishaal
+
+
+## Menu Handling -- Mitali
+
+def main():
+    menu_file = "BAX304FINAL.txt"
+    menu = load_menu(menu_file)
+    display_menu(menu)
+
+
