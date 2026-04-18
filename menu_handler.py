@@ -33,6 +33,7 @@ def load_menu(filename):
 
 def display_menu(menu):
     last_category = None 
+    count = 0
     for item in menu:
         category = item[0]
         name = item[1]
@@ -42,47 +43,46 @@ def display_menu(menu):
             print(f"\n=== {category} ===")
             last_category = category
     
-        print(f"{name}, ${price:.2f}")
+        print(f"{count}: {name}, ${price:.2f}")
+        count += 1
 
 ## Adding Orders -- Adriana
 def add_order(menu):
-    display_menu(menu)
-
     # user will choose item from the menu labeled w/ numbers
     # choice should correspond with the Menu index
-    choice = int(input("Menu item #: "))
+    choice = int(input("\nInput menu item #: "))
     while (choice < 0 or choice >= len(menu)):
         choice = int(input("Invalid input! Re-enter menu item #: "))
     
-    quantity = int(input(f"Quantity of {menu[choice]} (must be > 0): "))
+    quantity = int(input(f"Quantity of {menu[choice][1]}: "))
     while (quantity < 0):
-        quantity = int(input(f"Invalid input! Re-enter quantity of {menu[choice]} (must be > 0): "))
+        quantity = int(input(f"Invalid input! Re-enter quantity of {menu[choice][1]} (must be > 0): "))
     
     # append [item #, quantity]
     order.append([choice, quantity])
-    print("Successfully added order!")
+    print("[Successfully added order!]")
 
 ## Removing Orders -- Adriana
 def remove_order(menu):
-    # display the orders so user can choose which one to remove
-    count = 0
-    for o in order:
-        # print order #, item name, and quantity
-        print(f"Order #{count}: {menu[o[0]][0]}, {o[1]}")
-        count += 1
-    
-    choice = int(input("Order #: "))
+    # display order numbers so user can choose which one to remove
+    display_orders()
+
+    choice = int(input("\nOrder number to remove: "))
     while (choice < 0 or choice >= len(order)):
-        choice = int(input("Invalid input! Re-enter order #: "))
+        choice = int(input("Invalid input! Re-enter order number: "))
     
     del order[choice]
-    print(f"Successfully removed order {choice}!")
+    print(f"[Successfully removed order {choice}!]")
 
-# testing code (ignore)
-# load_menu("BAX304FINAL.txt")
-# display_menu(menu)
-# add_order(menu)
-# remove_order(menu)
+# used in remove_order() to display order numbers
+def display_orders():
+    print("\n=== ORDERS ===")
+    count = 0
+    for o in order:
+        # print         order #, item name, and quantity
+        print(f"Order #{count}: {menu[o[0]][1]}, {o[1]}qty")
+        count += 1
+
 ## Calculating Subtotal, Tax, and Discount -- Emma
 
 
