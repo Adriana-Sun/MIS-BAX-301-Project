@@ -85,6 +85,26 @@ def display_orders():
         count += 1
 
 ## Calculating Subtotal, Tax, and Discount -- Emma
+def calculate_pricing(menu):
+    tax_rate = 0.0825
+    discount_rate = 0.1
+
+    subtotal = 0
+    for order_item in order:
+        menu_index = order_item[0]
+        item_price = menu[menu_index][2]
+        quantity = order_item[1]
+        subtotal += item_price * quantity
+
+    discount = subtotal * discount_rate
+    discounted_total = subtotal - discount
+    tax = discounted_total * tax_rate
+    total = discounted_total + tax
+
+    print(f"Subtotal: ${subtotal:.2f}")
+    print(f"Discount: -${discount:.2f}")
+    print(f"Tax: ${tax:.2f}")
+    print(f"Total: ${total:.2f}")
 
 
 ## Receipt Generation -- Mishaal
