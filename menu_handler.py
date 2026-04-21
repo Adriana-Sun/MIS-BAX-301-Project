@@ -50,14 +50,38 @@ def display_menu(menu):
 ## Adding Orders -- Adriana
 def add_order(menu):
     # user will choose item from the menu labeled w/ numbers
-    # choice should correspond with the Menu index
-    choice = int(input("\nInput menu item #: "))
-    while (choice < 0 or choice >= len(menu)):
-        choice = int(input("Invalid input! Re-enter menu item #: "))
     
-    quantity = int(input(f"Quantity of {menu[choice][1]}: "))
-    while (quantity < 0):
-        quantity = int(input(f"Invalid input! Re-enter quantity of {menu[choice][1]} (must be > 0): "))
+    # choice should correspond with the Menu index
+    valid = False
+    while(valid == False):
+        choice = input("\nInput menu item #: ")
+        # create a try-catch statement to prevent letters from being entered
+        try:
+            choice = int(choice)
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+        else:
+            # check if number is on the menu (0 to length-1)
+            if (choice < 0 or choice >= len(menu)):
+                print(f"Invalid input. Enter a number between 0 and f{len(menu) - 1}")
+            else:
+                valid = True
+    
+    # quantity should be a number greater than 0
+    valid = False
+    while(valid == False):
+        quantity = input(f"Quantity of {menu[choice][1]}: ")
+        # create a try-catch statement to prevent letters from being entered
+        try:
+            quantity = int(quantity)
+        except ValueError:
+            print("Invalid input. Please enter a number.\n")
+        else:
+            # check if number is valid
+            if (quantity < 0):
+                print("Invalid input. Enter a number greater than 0.\n")
+            else:
+                valid = True
     
     # append [item #, quantity]
     order.append([choice, quantity])
@@ -67,10 +91,21 @@ def add_order(menu):
 def remove_order(menu):
     # display order numbers so user can choose which one to remove
     display_orders()
-
-    choice = int(input("\nOrder number to remove: "))
-    while (choice < 0 or choice >= len(order)):
-        choice = int(input("Invalid input! Re-enter order number: "))
+    
+    # create a Try-Catch statement to prevent users from inputting letters/words
+    valid = False
+    while(valid == False):
+        choice = input("\nOrder number to remove: ")
+        try:
+            choice = int(choice)
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+        else:
+            # check if number is on the orders (0 to length-1)
+            if (choice < 0 or choice >= len(order)):
+                print(f"Invalid input. Enter a number between 0 and {len(order) - 1}")
+            else:
+                valid = True
     
     del order[choice]
     print(f"[Successfully removed order {choice}!]")
