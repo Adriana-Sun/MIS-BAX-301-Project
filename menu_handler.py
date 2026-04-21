@@ -109,10 +109,39 @@ def calculate_pricing(menu):
 
 ## Receipt Generation -- Mishaal
 
+def generate_receipt(menu):
+    if len(order) == 0:
+        print("\n[No items in order!]")
+        return
+    print("\n========== RECEIPT ==========")
+
+    subtotal = 0
+    for o in order:
+        item_index = o[0]
+        quantity = o[1]
+
+        name = menu[item_index][1]
+        price = menu[item_index][2]
+
+        line_total = price * quantity
+        subtotal += line_total
+        print(f"{name} x{quantity} @ ${price:.2f} = ${line_total:.2f}")
+
+    discount = subtotal * 0.10
+    discounted_total = subtotal - discount
+    tax = discounted_total * 0.0825
+    total = discounted_total + tax
+    print("-----------------------------")
+    print(f"Subtotal:        ${subtotal:.2f}")
+    print(f"Discount (10%): -${discount:.2f}")
+    print(f"Tax (8.25%):     ${tax:.2f}")
+    print(f"Total:           ${total:.2f}")
+    print("=============================")
 
 ## Menu Handling -- Mitali
 
 def main():
+    global menu
     menu_file = "BAX304FINAL.txt"
     menu = load_menu(menu_file)
     display_menu(menu)
