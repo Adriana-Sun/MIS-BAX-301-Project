@@ -1,16 +1,22 @@
+### Calculate Subtotal, Tax, and Discounts ###
 tax_rate = 0.0825
 discount_rate = 0.1
 
 def loadfile(filename):
     with open(filename, 'r') as file:
         items = {}
+        
         for line in file:
             line = line.strip()
+            
             if line == "" or line.startswith("==="):
                 continue
+            
             name, price = line.split(",")
             items[name.strip()] = float(price.strip().replace("$", ""))
+    
     return items
+
 
 menu = loadfile("BAX304FINAL.txt")
 
