@@ -1,4 +1,3 @@
-
 tax_rate = 0.0825
 discount_rate = 0.1
 
