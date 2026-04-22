@@ -178,6 +178,58 @@ def main():
     global menu
     menu_file = "BAX304FINAL.txt"
     menu = load_menu(menu_file)
-    display_menu(menu)
+    
+    running = True
+    while running:
+        print("\n===== MAIN MENU =====")
+        print("1. View Menu")
+        print("2. Add Item to Order")
+        print("3. Remove Item from Order")
+        print("4. View Current Orders")
+        print("5. Calculate Pricing")
+        print("6. Generate Receipt")
+        print("7. Exit")
+
+        choice = input("Select an option (1-7): ")
+        if choice == "1":
+            display_menu(menu)
+
+        elif choice == "2":
+            display_menu(menu)
+            add_order(menu)
+
+        elif choice == "3":
+            if len(order) == 0:
+                print("[No items to remove!]")
+            else:
+                remove_order(menu)
+
+        elif choice == "4":
+            if len(order) == 0:
+                print("[No current orders!]")
+            else:
+                display_orders()
+
+        elif choice == "5":
+            if len(order) == 0:
+                print("[No items in order!]")
+            else:
+                calculate_pricing(menu)
+
+        elif choice == "6":
+            receipt_text = generate_receipt(menu)
+            save = input("Save receipt to file? (y/n): ").lower()
+            if save == "y" and receipt_text != "":
+                 with open("receipt.txt", "w") as f:
+                    f.write(receipt_text)
+                    print("[Receipt saved to receipt.txt]")
+
+        elif choice == "7":
+            running = False
 
 
+if __name__ == "__main__":
+    main()
+
+    
+            
