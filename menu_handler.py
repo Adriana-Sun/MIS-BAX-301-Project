@@ -63,7 +63,7 @@ def add_order(menu):
         else:
             # check if number is on the menu (0 to length-1)
             if (choice < 0 or choice >= len(menu)):
-                print(f"Invalid input. Enter a number between 0 and f{len(menu) - 1}")
+                print(f"Invalid input. Enter a number between 0 and {len(menu) - 1}")
             else:
                 valid = True
     
@@ -146,7 +146,7 @@ def calculate_pricing(menu):
 def generate_receipt(menu):
     if len(order) == 0:
         print("\n[No items in order!]")
-        return
+        return ""
     print("\n========== RECEIPT ==========")
 
     subtotal = 0
@@ -171,6 +171,12 @@ def generate_receipt(menu):
     print(f"Tax (8.25%):     ${tax:.2f}")
     print(f"Total:           ${total:.2f}")
     print("=============================")
+
+    # store in string to return for file generation
+    return (f"Subtotal,${subtotal:.2f}\n"+
+            f"Discount,${discount:.2f}\n"+
+            f"Tax,${tax:.2f}\n"+
+            f"Total,${total:.2f}")
 
 ## Menu Handling -- Mitali
 
@@ -218,11 +224,12 @@ def main():
 
         elif choice == "6":
             receipt_text = generate_receipt(menu)
-            save = input("Save receipt to file? (y/n): ").lower()
-            if save == "y" and receipt_text != "":
-                 with open("receipt.txt", "w") as f:
-                    f.write(receipt_text)
-                    print("[Receipt saved to receipt.txt]")
+            if receipt_text != "":
+                save = input("Save receipt to file? (y/n): ").lower()
+                if save == "y":
+                    with open("receipt.txt", "w") as f:
+                        f.write(receipt_text)
+                        print("[Receipt saved to receipt.txt]")
 
         elif choice == "7":
             running = False
