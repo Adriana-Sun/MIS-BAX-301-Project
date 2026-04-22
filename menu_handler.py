@@ -143,7 +143,6 @@ def calculate_pricing(menu):
 
 
 ## Receipt Generation -- Mishaal
-
 def generate_receipt(menu):
     if len(order) == 0:
         print("\n[No items in order!]")
